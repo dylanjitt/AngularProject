@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+//interfaces
+interface IPerson{
+  name:string
+  latName:string
+  age?:number
+}
 
 @Component({
   selector: 'app-root',
@@ -11,6 +17,17 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title:number=30;
   animals:string[]=['loro','gato','mono']
+  //interfaz completa
+  person: IPerson={
+    name:"Kendrick",
+    latName:"Lester",
+    age:20
+  }
+  //interfaz con solo lo obligatorio
+  person2: IPerson={
+    name:"Drake",
+    latName:"Josh"
+  }
 
   constructor(){
     console.log("subtract",this.subtract(8,4))
@@ -19,8 +36,6 @@ export class AppComponent {
     console.log("FIND",this.animals.find((animal)=>animal==='mono' ))//busca en la lista
     console.log("FILTER",this.animals.find((animal)=>animal==='mono' ))//devuelve array con los items filtrados de otra lista
     console.log("INDEXOFF",this.animals.indexOf('mono' ))//devuelve en que posicion en la lista esta un item a especificar
-    console.log("CONCAT",this.animals.find((animal)=>animal==='mono' ))
-
   }
 
   public sum(num1:number,num2:number):number{
