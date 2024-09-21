@@ -19,6 +19,7 @@ export class AppComponent {
     console.log("FIND",this.animals.find((animal)=>animal==='mono' ))//busca en la lista
     console.log("FILTER",this.animals.find((animal)=>animal==='mono' ))//devuelve array con los items filtrados de otra lista
     console.log("INDEXOFF",this.animals.indexOf('mono' ))//devuelve en que posicion en la lista esta un item a especificar
+    console.log("CONCAT",this.animals.find((animal)=>animal==='mono' ))
 
   }
 
