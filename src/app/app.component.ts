@@ -10,9 +10,16 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title:number=30;
+  animals:string[]=['loro','gato','mono']
 
   constructor(){
     console.log("subtract",this.subtract(8,4))
+    console.log("MAP",this.animals.map((animal)=>(animal+ ' peruano')   ))//genera nuevo array
+    console.log("FOREACH",this.animals.forEach((animal)=>(animal+ ' argentino')   ))//usa elementos del viejo array
+    console.log("FIND",this.animals.find((animal)=>animal==='mono' ))//busca en la lista
+    console.log("FILTER",this.animals.find((animal)=>animal==='mono' ))//devuelve array con los items filtrados de otra lista
+    console.log("INDEXOFF",this.animals.indexOf('mono' ))//devuelve en que posicion en la lista esta un item a especificar
+
   }
 
   public sum(num1:number,num2:number):number{
@@ -32,5 +39,20 @@ export class AppComponent {
       
     }
   }
+
+  // function sumer(){
+  //   return 1+2
+  // }
+
+  // const suma = (): number => {
+  //   return 1+2
+  // }
+
+  // function rester(){
+  //   return 3-1
+  // }
+
+  // const resta = (): number => 2-1
+  
 
 }
