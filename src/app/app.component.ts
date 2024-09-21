@@ -23,4 +23,14 @@ export class AppComponent {
     return num1-num2;
   }
 
+  public getArray():void{
+    const persons:number[]=[1,2,3,4,5]
+    for(let i=0;i<persons.length;i++){
+      if (persons[i]%2==0){
+        console.log("person =",persons[i])
+      }
+      
+    }
+  }
+
 }
