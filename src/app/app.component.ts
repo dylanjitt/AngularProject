@@ -32,6 +32,10 @@ export class AppComponent {
   students:number[]=[1,2,3,4,5,6]
   parents:number[]=[7,8,9,10]
 
+  var1=0
+  var2=null
+  var3='hola'
+
   constructor(){
 
     
@@ -51,6 +55,10 @@ export class AppComponent {
     console.log("spreed operator: ",both)// tambien sirve para unir 2 objetos json
     console.log("REST operator", this.sum(2,4))
     console.log("REDUCE operator", this.reduce(2,4,6))
+
+    console.log("Nullish Coalesing: ",this.var2 ?? this.var3)
+    console.log("OR: ",this.var2 || this.var1)
+
   }
 
   public sum2(...persons:number[]){
