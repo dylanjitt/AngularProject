@@ -91,6 +91,12 @@ export class AppComponent {
     }
   }
 
+  public recieveData(data:any){
+    console.log("Taylor Swift Sucks")
+    console.log(data)
+
+  }
+
   // function sumer(){
   //   return 1+2
   // }
