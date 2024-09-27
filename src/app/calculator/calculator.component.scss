@@ -1,0 +1,29 @@
+.calculator{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000030;
+  width: 100%;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  border-width: 3px;
+  border-color: black;
+}
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  margin:5px;
+  width: 100px;
+  height: 40px;
+}

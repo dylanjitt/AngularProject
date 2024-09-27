@@ -4,3 +4,5 @@
 <p>FOR: {{getArray()}}</p>
 <p>SUM LISTS OF ELEMENTS: {{sum2(32,23)}}</p>
 <app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'"></app-user-card>
+<p>RESULT CALCULATOR: {{result}}</p>
+<app-calculator (sum)="setRes($event)" (mult)="setRes($event)" (reset)="setRes($event)"></app-calculator>
