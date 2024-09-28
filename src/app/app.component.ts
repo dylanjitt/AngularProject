@@ -38,6 +38,8 @@ export class AppComponent {
   var1=0
   var2=null
   var3='hola'
+// creación de Variable para probar NgIf y ngSwitch
+  togg:boolean=false
 
   constructor(){
 
@@ -64,6 +66,9 @@ export class AppComponent {
 
   }
 
+  public toggle(){
+    this.togg=!this.togg
+  }
   public sum2(...persons:number[]){
     return persons[0]+persons[1]
   }

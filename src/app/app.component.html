@@ -9,11 +9,41 @@
 <p>RESULT CALCULATOR: {{result}}</p>
 <app-calculator (sum)="setRes($event)" (mult)="setRes($event)" (reset)="setRes($event)"></app-calculator>
 
+<button (click)="toggle()">change state Toggle</button>
+<p>{{togg}}</p>
 <p>Sintaxis Modifiers angular:</p>
+<p>NG IF:</p>
 <p>Ols style:</p>
-<p *ngIf="1>0">Variables works</p>
+<p *ngIf="togg; else elseOld">Variables works</p>
+<ng-template #elseOld>
+  <p >this result is false</p>
+</ng-template>
+
 
 <p>New Sintaxys:</p>
-@if(1>0){
+@if(togg){
   <p>New sintaxys works</p>
+} @else{
+  <p>this result is falsee</p>
+}
+<p>NG FOR:</p>
+<p>Old Sintaxys</p>
+<p *ngFor="let animal of animals; let i = index">{{animal}}, index: {{i}}</p>
+
+<p>New sintaxys: </p>
+@for(animal of animals;track animal; let i=$index){
+  <p>{{i}} Index: {{animal}}</p>
+}
+
+<p>NG Switch</p>
+<p>OLD syntax</p>
+<div [ngSwitch]="togg">
+  <p *ngSwitchCase="false">Toggle is OFF</p>
+  <p *ngSwitchCase="true">Toggle is ON</p>
+</div>
+
+<p>New Syntax:</p>
+@switch (togg) {
+  @case (true) { <p>new syntax: Toggle ON!</p> }
+  @case (false) {<p>new syntax: Toggle OFF</p> }
 }
