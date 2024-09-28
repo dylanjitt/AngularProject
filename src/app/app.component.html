@@ -3,6 +3,17 @@
 <p>Restar {{subtract(3,2)}}</p>
 <p>FOR: {{getArray()}}</p>
 <p>SUM LISTS OF ELEMENTS: {{sum2(32,23)}}</p>
-<app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'"></app-user-card>
+<app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'">
+  <p>HTML From the father component</p>
+</app-user-card>
 <p>RESULT CALCULATOR: {{result}}</p>
 <app-calculator (sum)="setRes($event)" (mult)="setRes($event)" (reset)="setRes($event)"></app-calculator>
+
+<p>Sintaxis Modifiers angular:</p>
+<p>Ols style:</p>
+<p *ngIf="1>0">Variables works</p>
+
+<p>New Sintaxys:</p>
+@if(1>0){
+  <p>New sintaxys works</p>
+}
