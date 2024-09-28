@@ -3,6 +3,11 @@
 <p>Restar {{subtract(3,2)}}</p>
 <p>FOR: {{getArray()}}</p>
 <p>SUM LISTS OF ELEMENTS: {{sum2(32,23)}}</p>
+
+<app-persons>
+  <p>Persons app Component:</p>
+</app-persons>
+
 <app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'">
   <p>HTML From the father component</p>
 </app-user-card>
@@ -46,4 +51,5 @@
 @switch (togg) {
   @case (true) { <p>new syntax: Toggle ON!</p> }
   @case (false) {<p>new syntax: Toggle OFF</p> }
+  @default {<p>default Mode</p> }
 }

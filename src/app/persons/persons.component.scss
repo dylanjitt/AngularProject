@@ -1,0 +1,45 @@
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: beige;
+  flex-direction: column;
+}
+.inner{
+  display: flex;
+}
+
+.section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+}
+.card{
+  margin: 20px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+}
+.discount{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 3px;
+}
+.remove{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: greenyellow;
+}
