@@ -19,6 +19,10 @@ interface IPerson{
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  userCardCreated:boolean=true
+
+
   title:number=30;
   animals:string[]=['loro','gato','mono']
   //interfaz completa
@@ -40,7 +44,7 @@ export class AppComponent {
   var2=null
   var3='hola'
 // creación de Variable para probar NgIf y ngSwitch
-  togg:boolean=false
+  togg:boolean=true
 
   constructor(){
 

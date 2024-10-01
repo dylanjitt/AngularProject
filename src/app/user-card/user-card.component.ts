@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input,Output } from '@angular/core';
+import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy} from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-user-card',
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
-export class UserCardComponent {
+export class UserCardComponent implements OnInit,OnDestroy{
 
   //inputs outputs
   @Input() name:string=''
@@ -17,5 +17,17 @@ export class UserCardComponent {
 
   public onSendData(){
     this.sendData.emit("los skibidi se pusieron toilet")
+  }
+
+  constructor(){
+    console.log("HOLAAAAA USER CARD")
+  }
+
+  ngOnInit(): void {
+    console.log("BONJOUR USER CARD OnInit")
+  }
+
+  ngOnDestroy(): void {
+      console.log("ADIOS NG OnDestroy")
   }
 }

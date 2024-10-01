@@ -8,46 +8,51 @@
   <p>Persons app Component:</p>
 </app-persons>
 
-<app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'">
+@if(togg){
+  <app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'">
   <p>HTML From the father component</p>
-</app-user-card>
+  </app-user-card>
+}
+
+
+
 <p>RESULT CALCULATOR: {{result}}</p>
 <app-calculator (sum)="setRes($event)" (mult)="setRes($event)" (reset)="setRes($event)"></app-calculator>
 
 <button (click)="toggle()">change state Toggle</button>
 <p>{{togg}}</p>
 <p>Sintaxis Modifiers angular:</p>
-<p>NG IF:</p>
-<p>Ols style:</p>
+<h1>NG IF:</h1>
+<h2>Old Syntax</h2>
 <p *ngIf="togg; else elseOld">Variables works</p>
 <ng-template #elseOld>
   <p >this result is false</p>
 </ng-template>
 
 
-<p>New Sintaxys:</p>
+<h2>New Syntax</h2>
 @if(togg){
   <p>New sintaxys works</p>
 } @else{
   <p>this result is falsee</p>
 }
-<p>NG FOR:</p>
-<p>Old Sintaxys</p>
+<h1>NG FOR:</h1>
+<h2>Old Syntax</h2>
 <p *ngFor="let animal of animals; let i = index">{{animal}}, index: {{i}}</p>
 
-<p>New sintaxys: </p>
+<h2>New Syntax</h2>
 @for(animal of animals;track animal; let i=$index){
   <p>{{i}} Index: {{animal}}</p>
 }
 
-<p>NG Switch</p>
-<p>OLD syntax</p>
+<h1>NG Switch</h1>
+<h2>Old Syntax</h2>
 <div [ngSwitch]="togg">
   <p *ngSwitchCase="false">Toggle is OFF</p>
   <p *ngSwitchCase="true">Toggle is ON</p>
 </div>
 
-<p>New Syntax:</p>
+<h2>Old Syntax</h2>
 @switch (togg) {
   @case (true) { <p>new syntax: Toggle ON!</p> }
   @case (false) {<p>new syntax: Toggle OFF</p> }
