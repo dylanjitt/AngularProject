@@ -20,8 +20,9 @@ interface IPerson{
 })
 export class AppComponent {
 
-  userCardCreated:boolean=true
-
+  users=[{name: 'Marques Keith Brownlee',email:'Mkbhd@yt.net'},{name: 'Linus Sebastian',email:'linustechtips@lttstore.com'}]
+  userMode:boolean=true
+  selectedUser:any=this.users[0]
 
   title:number=30;
   animals:string[]=['loro','gato','mono']
@@ -73,6 +74,14 @@ export class AppComponent {
 
   public toggle(){
     this.togg=!this.togg
+  }
+  public toggleuser(){
+    this.userMode=!this.userMode
+    if (this.userMode){
+      this.selectedUser=this.users[0]
+    }else if (this.userMode==false){
+      this.selectedUser=this.users[1]
+    }
   }
   public sum2(...persons:number[]){
     return persons[0]+persons[1]

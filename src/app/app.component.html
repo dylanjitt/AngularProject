@@ -8,8 +8,11 @@
   <p>Persons app Component:</p>
 </app-persons>
 
+<button (click)="toggle()">change state Toggle</button>
+<button (click)="toggleuser()">Toggle User</button>
+
 @if(togg){
-  <app-user-card (sendData)="recieveData($event)" name="Marques Keith Brownlee"  [email]="'Mkbhd@yt.net'">
+  <app-user-card (sendData)="recieveData($event)" name={{selectedUser.name}}  email={{selectedUser.email}}>
   <p>HTML From the father component</p>
   </app-user-card>
 }
@@ -19,7 +22,7 @@
 <p>RESULT CALCULATOR: {{result}}</p>
 <app-calculator (sum)="setRes($event)" (mult)="setRes($event)" (reset)="setRes($event)"></app-calculator>
 
-<button (click)="toggle()">change state Toggle</button>
+
 <p>{{togg}}</p>
 <p>Sintaxis Modifiers angular:</p>
 <h1>NG IF:</h1>

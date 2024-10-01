@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy} from '@angular/core';
+import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-user-card',
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
-export class UserCardComponent implements OnInit,OnDestroy{
+export class UserCardComponent implements OnInit,OnDestroy,OnChanges{
 
   //inputs outputs
   @Input() name:string=''
@@ -15,6 +15,7 @@ export class UserCardComponent implements OnInit,OnDestroy{
 
   @Output() sendData = new EventEmitter<string>()
 
+  password:string=''
   public onSendData(){
     this.sendData.emit("los skibidi se pusieron toilet")
   }
@@ -25,9 +26,14 @@ export class UserCardComponent implements OnInit,OnDestroy{
 
   ngOnInit(): void {
     console.log("BONJOUR USER CARD OnInit")
+    this.password=this.name+this.email+"PASSWORD1234"
   }
 
   ngOnDestroy(): void {
       console.log("ADIOS NG OnDestroy")
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log(changes)
+      this.password=changes['name'].currentValue+changes['email'].currentValue+"PASSWORD1234"
   }
 }
