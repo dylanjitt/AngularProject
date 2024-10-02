@@ -58,17 +58,17 @@ export class AppComponent {
     // console.log("INDEXOFF",this.animals.indexOf('mono' ))//devuelve en que posicion en la lista esta un item a especificar
 
     //desestructuración
-    const {name,age} = this.person
+    // const {name,age} = this.person
 
-    console.log('desestructuracion: ',name,age)
+    // console.log('desestructuracion: ',name,age)
 
-    let both =[...this.students,...this.parents]//street var, para que analice variable por variable en la lista 
-    console.log("spreed operator: ",both)// tambien sirve para unir 2 objetos json
-    console.log("REST operator", this.sum(2,4))
-    console.log("REDUCE operator", this.reduce(2,4,6))
+    // let both =[...this.students,...this.parents]//street var, para que analice variable por variable en la lista 
+    // console.log("spreed operator: ",both)// tambien sirve para unir 2 objetos json
+    // console.log("REST operator", this.sum(2,4))
+    // console.log("REDUCE operator", this.reduce(2,4,6))
 
-    console.log("Nullish Coalesing: ",this.var2 ?? this.var3)
-    console.log("OR: ",this.var2 || this.var1)
+    // console.log("Nullish Coalesing: ",this.var2 ?? this.var3)
+    // console.log("OR: ",this.var2 || this.var1)
 
   }
 
