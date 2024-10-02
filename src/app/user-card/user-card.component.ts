@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, SimpleChanges, DoCheck, AfterContentInit} from '@angular/core';
+import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
-export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, AfterContentInit{
+export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, AfterContentInit,AfterViewInit{
 
   //inputs outputs
   @Input() name:string=''
@@ -16,7 +16,11 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
 
   @Output() sendData = new EventEmitter<string>()
 
+  @ViewChild("buttonTest",{static:true}) buttonTest!: ElementRef // componente para inicializar a posterioridad, no al inicio o creación del componente
+  showButton=false//para ver si se renderiza el boton
+
   password:string=''
+
   public onSendData(){
     this.sendData.emit("los skibidi se pusieron toilet")
   }
@@ -43,5 +47,11 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
   }
   ngAfterContentInit(): void {
       console.log("NG AFTER CONTENT INIT")// para ver el ocntenido que entró de afuera
+  }
+
+  ngAfterViewInit(): void {
+    console.log("NG AFTER VIEW INIT")
+    console.log(this.buttonTest)
+    console.log(this.buttonTest.nativeElement.textContent)
   }
 }

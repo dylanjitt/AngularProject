@@ -3,9 +3,15 @@
   <p>INPUT NAME: {{name}}</p>
   <p>input EMAIL: {{email}}</p>
   <input type="text" [(ngModel)]="password">
-  <button (click)="onSendData()">
-    Send Data
-  </button>
+
+  <!-- @if(showButton){ -->
+    <button #buttonTest (click)="onSendData()">Send Data</button>
+  <!-- }@else {
+    <p>It is false</p>
+  } -->
+  
+
+
   <p>PassWord: {{password}}</p>
 
   <ng-content></ng-content>
