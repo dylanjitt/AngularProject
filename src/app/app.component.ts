@@ -107,6 +107,7 @@ export class AppComponent {
     let odd:string[]=[]
     for(let i=0;i<persons.length;i++){
       if (persons[i]%2==0){
+        console.log("person ="+persons[i])
         odd=[...odd,"person ="+persons[i]] 
       }
       

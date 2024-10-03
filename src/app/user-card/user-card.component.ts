@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterViewInit, ViewChild, ElementRef, AfterContentChecked, AfterViewChecked} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
-export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, AfterContentInit,AfterViewInit{
+export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, AfterContentInit,AfterViewInit,AfterContentChecked,AfterViewChecked{
 
   //inputs outputs
   @Input() name:string=''
@@ -55,7 +55,14 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
     console.log("NG AFTER VIEW INIT")
     if(this.buttonTest){
       this.buttonTest.nativeElement.textContent='Data sent'
-    }
-    
+    } 
+  }
+
+  ngAfterContentChecked(): void {
+      console.log("After Content Checked")
+  }
+  
+  ngAfterViewChecked(): void {
+    console.log("After View Checked")
   }
 }
