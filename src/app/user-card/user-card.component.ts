@@ -16,9 +16,10 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
 
   @Output() sendData = new EventEmitter<string>()
 
-  @ViewChild("buttonTest",{static:true}) buttonTest!: ElementRef // componente para inicializar a posterioridad, no al inicio o creación del componente
-  showButton=false//para ver si se renderiza el boton
+  @ViewChild("buttonTest",{static:false}) buttonTest!: ElementRef // componente para inicializar a posterioridad, no al inicio o creación del componente
+  @ViewChild("buttonShow",{static:true}) buttonShow!: ElementRef 
 
+  showButton=true//para ver si se renderiza el boton
   password:string=''
 
   public onSendData(){
@@ -32,6 +33,7 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
   ngOnInit(): void {
     console.log("BONJOUR USER CARD OnInit")
     this.password=this.name+this.email+"PASSWORD1234"
+    this.buttonShow.nativeElement.textContent="button show in OnInit"
   }
 
   ngOnDestroy(): void {
@@ -51,7 +53,9 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
 
   ngAfterViewInit(): void {
     console.log("NG AFTER VIEW INIT")
-    console.log(this.buttonTest)
-    console.log(this.buttonTest.nativeElement.textContent)
+    if(this.buttonTest){
+      this.buttonTest.nativeElement.textContent='Data sent'
+    }
+    
   }
 }

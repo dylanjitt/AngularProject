@@ -102,14 +102,16 @@ export class AppComponent {
     return num1-num2;
   }
 
-  public getArray():void{
+  public getArray(){
     const persons:number[]=[1,2,3,4,5]
+    let odd:string[]=[]
     for(let i=0;i<persons.length;i++){
       if (persons[i]%2==0){
-        console.log("person =",persons[i])
+        odd=[...odd,"person ="+persons[i]] 
       }
       
     }
+    return odd
   }
 
   public recieveData(data:any){

@@ -4,11 +4,12 @@
   <p>input EMAIL: {{email}}</p>
   <input type="text" [(ngModel)]="password">
 
-  <!-- @if(showButton){ -->
+  <button #buttonShow (click)="showButton=!showButton">Show Button</button>
+  @if(showButton){
     <button #buttonTest (click)="onSendData()">Send Data</button>
-  <!-- }@else {
+  }@else {
     <p>It is false</p>
-  } -->
+  }
   
 
 
