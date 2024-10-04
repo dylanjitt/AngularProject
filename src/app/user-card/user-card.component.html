@@ -1,4 +1,8 @@
-<div class="user-card">
+<!-- directiva de atributos (NgClass) -->
+<div [ngClass]="{
+  'user-card':password=='123',
+  'user-card-black':password=='hola'
+}"  ><!-- class="user-card"> -->
   <p>USER CARD COMPONENT</p>
   <p>INPUT NAME: {{name}}</p>
   <p>input EMAIL: {{email}}</p>
