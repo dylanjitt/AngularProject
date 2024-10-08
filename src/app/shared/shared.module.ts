@@ -3,13 +3,20 @@ import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import { CardComponent } from './card/card.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
-
-
 @NgModule({
-  declarations: [AlertComponent,CardComponent,NavbarComponent],
+  declarations: [
+    AlertComponent,
+    CardComponent,
+    NavbarComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    
+  ],
+  exports:[
+    AlertComponent,
+    CardComponent,
+    NavbarComponent
   ]
 })
-export class SharedModuleModule { }
+export class SharedModule { }
