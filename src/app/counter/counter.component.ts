@@ -44,25 +44,25 @@ export class CounterComponent {
     //   }
     // })
 
-    afterRender({
-        write:()=> {
-          console.log("into write: ")
-          document.body.style.backgroundColor=this.appBackground
+    // afterRender({
+    //     write:()=> {
+    //       console.log("into write: ")
+    //       document.body.style.backgroundColor=this.appBackground
 
-          const currentColor=this.appBackground
-          if(currentColor==='blue'){
-            this.appBackground='white'
-          }else{
-            this.appBackground='blue'
-          }
-          return "From write: "+this.appBackground
-        },
-        read:(props)=>{
-          console.log("Into read: "+props)
-          const newBackground=this.appBackground
-          return "From Read: "+this.appBackground
-        }
-      })
+    //       const currentColor=this.appBackground
+    //       if(currentColor==='blue'){
+    //         this.appBackground='white'
+    //       }else{
+    //         this.appBackground='blue'
+    //       }
+    //       return "From write: "+this.appBackground
+    //     },
+    //     read:(props)=>{
+    //       console.log("Into read: "+props)
+    //       const newBackground=this.appBackground
+    //       return "From Read: "+this.appBackground
+    //     }
+    //   })
     
     afterNextRender(()=> {
       console.log("AFTER NEXT RENDER ",this.sum)

@@ -3,7 +3,10 @@
   'user-card':password=='123',
   'user-card-black':password=='hola'
 }"  ><!-- class="user-card"> -->
-  <p>USER CARD COMPONENT</p>
+  <p [ngStyle]="{
+    'background-color': password === 'red'?'red':'yellow'
+  }"
+  >USER CARD COMPONENT</p>
   <p>INPUT NAME: {{name}}</p>
   <p>input EMAIL: {{email}}</p>
   <input type="text" [(ngModel)]="password">
@@ -14,8 +17,6 @@
   }@else {
     <p>It is false</p>
   }
-  
-
 
   <p>PassWord: {{password}}</p>
 
