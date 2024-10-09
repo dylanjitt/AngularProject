@@ -5,6 +5,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { PersonsComponent } from './persons/persons.component';
 import { CommonModule } from '@angular/common';
 import { CounterComponent } from './counter/counter.component';
+import { from } from 'rxjs/internal/observable/from';
+import { filter, map, tap } from 'rxjs/operators';
 //interfaces
 interface IPerson{
   name:string
@@ -45,11 +47,12 @@ export class AppComponent {
   var1=0
   var2=null
   var3='hola'
+  youtube=from([1,3,2,4,6,7,8])
 // creación de Variable para probar NgIf y ngSwitch
   togg:boolean=true
 
   constructor(){
-
+    this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
     
     // console.log("subtract",this.subtract(8,4))
     // console.log("MAP",this.animals.map((animal)=>(animal+ ' peruano')   ))//genera nuevo array
@@ -127,6 +130,20 @@ export class AppComponent {
     this.result=data
   }
 
+  addVideo(){
+    this.youtube.pipe(
+      map((res: number)=>{
+        //console.log('MAP OPERATOR RXJS: ',res)
+        if(res%2==0){
+          return res
+        }else{
+          return null
+        }
+      }),
+      tap((res)=>{console.log('VALUE: ',res)}),
+      filter((res:number|null)=> res !== null)
+    ).subscribe(res=>console.log("SUB 2: ",res))
+  }
   // function sumer(){
   //   return 1+2
   // }
