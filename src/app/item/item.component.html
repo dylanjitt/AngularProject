@@ -1,0 +1,5 @@
+<div class="card" [ngStyle]="{'background-color':role=='student'?'blue':'orange'} ">
+  <p>{{name}} - {{role}}</p>
+  <button (click)="onShow()">Show</button>
+  <button (click)="onDelete()">Delete</button>
+</div>

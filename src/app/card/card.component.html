@@ -1,0 +1,27 @@
+<p>card works!</p>
+<div class="card" [ngStyle]="{'background-color':person?.type=='student'?'blue':'orange'} ">
+  <button (click)="onPersonal()">Personal</button>
+  <button (click)="onGeo()">Geographic</button>
+  <button (click)="onMess()">Messages</button>
+  @if(personal){
+    <p>Name: {{person?.name}}</p>
+    <p>lastname: {{person?.lastName}}</p>
+    <p>Type: {{person?.type}}</p>
+    @if(person?.type=='student'){
+      <p>Score: {{person?.averageScore}}</p>
+    }@else if(person?.type=='professor'){
+      <p>Subject: {{person?.subject}}</p>
+    }
+  }
+  @if(geo){
+    <p>Address: {{person?.address}}</p>
+    <p>Country: {{person?.country}}</p>
+    <p>Province: {{person?.province}}</p>
+  }
+
+  @if(mess){
+    @for(item of person?.messages;track $index){
+      <p>{{item}}</p>
+    }
+  }
+</div>
