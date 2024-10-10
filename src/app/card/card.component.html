@@ -1,4 +1,4 @@
-<p>card works!</p>
+<p>card Component:</p>
 <div class="card" [ngStyle]="{'background-color':person?.type=='student'?'blue':'orange'} ">
   <button (click)="onPersonal()">Personal</button>
   <button (click)="onGeo()">Geographic</button>
@@ -20,8 +20,13 @@
   }
 
   @if(mess){
+    <app-search (search)="search($event)"></app-search>
     @for(item of person?.messages;track $index){
-      <p>{{item}}</p>
+      
+      <app-item>
+        <p>{{item}}</p>
+      </app-item>
+      
     }
   }
 </div>

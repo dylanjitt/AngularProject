@@ -1,5 +1,10 @@
-<p>list works!</p>
 @for(item of persons;track $index){
-  <app-item name="{{item.name}}" role="{{item.type}}"></app-item>
+  <app-item >
+    <div class="card" [ngStyle]="{'background-color':item.type=='student'?'blue':'orange'} ">
+      <p>{{item.name}}  {{item.lastName}} - {{item.type}} </p>
+      <button (click)="onShow(item.name)">Show</button>
+      <button (click)="onDelete(item.name)">Delete</button>
+    </div>
+  </app-item>
 }
 

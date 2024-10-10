@@ -1,3 +1,4 @@
 <p>hola</p>
-<app-list [persons]="persons" ></app-list>
+<app-search (search)="search($event)"></app-search>
+<app-list (sendData)="showPerson($event)" (delete)="deletePerson($event)" [persons]="persons" ></app-list>
 <app-card [person]="person"></app-card>

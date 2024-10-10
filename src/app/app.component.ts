@@ -33,13 +33,11 @@ export class AppComponent {
   students:Person[]=[]
   professors:Person[]=[]
   persons:Person[]=[]
-  person=this.persons[0]
+  person:any=null
 
   constructor() {
     this.initializeData();
     this.persons=[...this.students,...this.professors]
-    this.person=this.persons[0]
-    console.log(this.person)
   }
 
   initializeData() {
@@ -76,6 +74,21 @@ export class AppComponent {
     }
   }
 
+  showPerson(data:any){
+    console.log(data)
+    this.person=this.persons.find((p)=>p.name==data)
+    console.log(this.person)
+  }
 
+  deletePerson(data:any){
+    console.log(data)
+    let per=this.persons.find((p)=>p.name==data)
+    this.persons=this.persons.filter((p)=>p!==per)
+  }
 
+  search(data:any){
+    console.log('search: ',data)
+    let per=this.persons.find((p)=>p.name==data)
+    this.persons=this.persons.filter((p)=>p==per)
+  }
 }
