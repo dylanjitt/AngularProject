@@ -71,10 +71,13 @@
 <button (click)="addVideo()">add new video to youTube</button> -->
 
 <div 
-ngColors 
-[color]="'red'" 
+[ngColors]="'red'" 
 [defaultColor]="'white'"
 (colorChange)="getColor($event)"
 (doubleColorChange)="getColor($event)"
 
 >MY CUSTOM ATTRIBUTE DIRECTIVE</div>
+
+<button (click)="userCardCreated=!userCardCreated">toggle usercardCreated</button>
+<p>{{userCardCreated}}</p>
+<div *appCreateHtml="userCardCreated">MY CUSTOM ATTRIBUTE DIRECTIVE</div>

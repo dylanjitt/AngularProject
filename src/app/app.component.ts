@@ -9,6 +9,7 @@ import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
 import { AppColorsDirective } from './app-colors.directive';
 import { FormControl, FormsModule } from '@angular/forms';
+import { CreateHtmlDirective } from './create-html.directive';
 //interfaces
 interface IPerson{
   name:string
@@ -19,7 +20,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -150,6 +151,8 @@ export class AppComponent {
   public getColor(value:string){
     console.log(value)
   }
+
+  userCardCreated:boolean=true
   
 
 }

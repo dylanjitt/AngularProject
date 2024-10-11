@@ -6,24 +6,24 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from
 })
 export class AppColorsDirective {
 
-  @Input() color!: string
+  @Input() ngColors!: string
   @Input() defaultColor!: string
 
   @Output() colorChange: EventEmitter<string>=new EventEmitter<string>()
   @Output() doubleColorChange: EventEmitter<string>=new EventEmitter<string>()
 
   @HostListener('click') onClick(){
-    this.element.nativeElement.style.backgroundColor=this.color
-    this.colorChange.emit("1 click: "+this.color)
+    this.element.nativeElement.style.backgroundColor=this.ngColors
+    this.colorChange.emit("1 click: "+this.ngColors)
   }
 
   @HostListener('dblclick') onDoubleClick(){
-    this.element.nativeElement.style.backgroundColor=this.color
-    this.colorChange.emit("2 click: "+this.color)
+    this.element.nativeElement.style.backgroundColor=this.ngColors
+    this.colorChange.emit("2 click: "+this.ngColors)
   }
 
   @HostListener('mouseleave') onBlur(){
-    this.color=this.defaultColor
+    this.ngColors=this.defaultColor
   }
 
   constructor(private element:ElementRef) {
