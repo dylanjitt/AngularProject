@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { CounterComponent } from './counter/counter.component';
 import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
+import { AppColorsDirective } from './app-colors.directive';
+import { FormControl, FormsModule } from '@angular/forms';
 //interfaces
 interface IPerson{
   name:string
@@ -17,7 +19,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -144,19 +146,10 @@ export class AppComponent {
       filter((res:number|null)=> res !== null)
     ).subscribe(res=>console.log("SUB 2: ",res))
   }
-  // function sumer(){
-  //   return 1+2
-  // }
-
-  // const suma = (): number => {
-  //   return 1+2
-  // }
-
-  // function rester(){
-  //   return 3-1
-  // }
-
-  // const resta = (): number => 2-1
+  //2DO PARCIAL:
+  public getColor(value:string){
+    console.log(value)
+  }
   
 
 }
