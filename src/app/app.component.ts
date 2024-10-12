@@ -10,6 +10,9 @@ import { filter, map, tap } from 'rxjs/operators';
 import { AppColorsDirective } from './app-colors.directive';
 import { FormControl, FormsModule } from '@angular/forms';
 import { CreateHtmlDirective } from './create-html.directive';
+import { PurePipe } from './pure.pipe';
+import { ImpurePipe } from './impure.pipe';
+
 //interfaces
 interface IPerson{
   name:string
@@ -20,7 +23,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective,PurePipe,ImpurePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -153,6 +156,18 @@ export class AppComponent {
   }
 
   userCardCreated:boolean=true
+
+  //funciones puras
+  public sumPure(a:number,b:number):number{
+    return a+b
+  }
+
+  public sumImpure(a:number,b:number):number{
+    return a+b+Math.random()
+  }
+  public addNumber(){
+    this.students=[...this.students,12]
+  }
   
 
 }

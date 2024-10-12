@@ -81,3 +81,22 @@
 <button (click)="userCardCreated=!userCardCreated">toggle usercardCreated</button>
 <p>{{userCardCreated}}</p>
 <div *appCreateHtml="userCardCreated">MY CUSTOM ATTRIBUTE DIRECTIVE</div>
+
+<h1>Pipes: </h1>
+
+<p>{{users|json}}</p>
+<p>{{'juan'|uppercase}}</p>
+<p>{{'TRAVIS'|lowercase|json}}</p>
+<p>{{'hola mundo'|titlecase}}</p>
+<p>{{'2012-02-16T00:00:00.000-0500'|date: 'dd/MM/YYYY'}}</p>
+<p>{{'2012-02-16T00:00:00.000-0500'|date: 'dd/MM/YYYY: hh:mm'}}</p>
+<!-- crea tu propio pipe -->
+ <p>MY First pipe pure:</p>
+ <p>{{students|pure}}</p>
+ <!-- solo se enfoca en los datos originales, como fueron creados por defecto -->
+ <p>MY First pipe Impure:</p>
+ <p>{{students|impure}}</p>
+ <!-- se enfoca en todos los datos, incluidos los cambios a posteriori -->
+
+ <button (click)="students.push(12)">add new number Impure</button>
+ <button (click)="addNumber()">add new number pure & impure</button>
