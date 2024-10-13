@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Person } from '../app.component';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from '../item/item.component';
@@ -11,18 +11,19 @@ import { SearchComponent } from '../search/search.component';
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
-export class CardComponent {
+export class CardComponent implements OnChanges {
   @Input() person:Person|null=null
 
   personal:boolean=true
   geo:boolean=false
   mess:boolean=false
 
-  messages:String[]=[]
+  messages:String[]|undefined[]=[]
   
   constructor() {
     if (this.person?.messages) {
       this.messages = this.person.messages; // Assuming person.messages is also a `string[]`
+      console.log(this.messages)
     }
   }
 
@@ -40,6 +41,12 @@ export class CardComponent {
     this.personal=false
     this.geo=false
     this.mess=true
+    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log('changes: ',changes['person'].currentValue['messages'])
+      this.messages = changes['person'].currentValue['messages']; // Assuming person.messages is also a `string[]`
+      console.log(this.messages)
   }
 
   search(data: string) {  // Cambiar el tipo de `data` a `string`
