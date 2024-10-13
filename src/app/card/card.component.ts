@@ -18,10 +18,13 @@ export class CardComponent {
   geo:boolean=false
   mess:boolean=false
 
-  // messages:string[]|undefined=[]
-  // constructor(){
-  //   this.messages=this.person?.messages
-  // }
+  messages:String[]=[]
+  
+  constructor() {
+    if (this.person?.messages) {
+      this.messages = this.person.messages; // Assuming person.messages is also a `string[]`
+    }
+  }
 
   public onPersonal(){
     this.personal=true
@@ -42,8 +45,12 @@ export class CardComponent {
   search(data: string) {  // Cambiar el tipo de `data` a `string`
     console.log('search: ', data);
     if (this.person && this.person.messages) {  // Asegúrate de que `person` y `messages` existan
-      const filteredMessages = this.person.messages.filter((message) => message.includes(data)); // Cambiar para filtrar según `data`
-      this.person.messages = filteredMessages;  // Asignar el nuevo array
+      if(data!==''){
+        const filteredMessages = this.person.messages.filter((message) => message.includes(data)); // Cambiar para filtrar según `data`
+        this.person.messages = filteredMessages;  // Asignar el nuevo array
+      }else{
+        this.person.messages=[...this.messages.map(String)]
+      }
     }
   }
 }

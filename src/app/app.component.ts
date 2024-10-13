@@ -33,11 +33,13 @@ export class AppComponent {
   students:Person[]=[]
   professors:Person[]=[]
   persons:Person[]=[]
+  personsBackup
   person:any=null
 
   constructor() {
     this.initializeData();
     this.persons=[...this.students,...this.professors]
+    this.personsBackup=this.persons
   }
 
   initializeData() {
@@ -88,7 +90,13 @@ export class AppComponent {
 
   search(data:any){
     console.log('search: ',data)
-    let per=this.persons.find((p)=>p.name==data)
-    this.persons=this.persons.filter((p)=>p==per)
+    if(data!==''){
+      let per=this.persons.find((p)=>p.name==data)
+      this.persons=this.persons.filter((p)=>p==per)
+    }
+    else(
+      this.persons=this.personsBackup
+    )
+    
   }
 }
