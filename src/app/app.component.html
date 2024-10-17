@@ -100,6 +100,14 @@
 
  <button (click)="students.push(12)">add new number Impure</button>
  <button (click)="addNumber()">add new number pure & impure</button>
+<p>navigation:</p>
+<button type="button" class="btn btn-primary" [routerLink]="'/card'">User Card</button>
+
+<button type="button" class="btn btn-dark" [routerLink]="'/calculator'">calculator</button>
+<button type="button" class="btn btn-danger" [routerLink]="'/counter-nav'">counter nav</button>
+<div class="thing">
+  <router-outlet></router-outlet>
+</div>
 
 
  <p>Tailwind example:</p>
@@ -130,6 +138,13 @@
 
 <p>Bootstrap example:</p>
 <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
 
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

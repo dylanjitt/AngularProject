@@ -7,3 +7,11 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.thing{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px solid green;
+  width: 100%;
+}

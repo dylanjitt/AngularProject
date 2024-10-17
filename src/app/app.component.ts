@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy,Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,RouterLink } from '@angular/router';
 import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PersonsComponent } from './persons/persons.component';
@@ -25,7 +25,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
