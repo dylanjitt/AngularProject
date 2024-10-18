@@ -5,7 +5,27 @@ import { CommonModule } from '@angular/common';
   selector: 'app-calculator',
   standalone: true,
   imports: [FormsModule,CommonModule],
-  templateUrl: './calculator.component.html',
+  // templateUrl: './calculator.component.html',
+  template:`
+  <div class="body">
+  <div class="calculator">
+    <p>calculator component!</p>
+    <input type="number" [(ngModel)]="box1Value">
+    <input type="number" [(ngModel)]="box2Value">
+    <div class="button-container">
+      <button (click)="onMult(box1Value,box2Value)">Multiplicar</button>
+      <button (click)="onSum(box1Value,box2Value)">Sumar</button>
+      <button (click)="onReset()">Reset</button>
+    </div>
+  </div>
+  <div class="historial">
+    <p>Historial: </p>
+    <ul>
+      <!-- Use *ngFor to loop through variables array -->
+      <li *ngFor="let item of variables">{{ item }}</li>
+    </ul>
+  </div>
+</div>`,
   styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent {
