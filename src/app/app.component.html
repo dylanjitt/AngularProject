@@ -101,13 +101,17 @@
  <button (click)="students.push(12)">add new number Impure</button>
  <button (click)="addNumber()">add new number pure & impure</button>
 <p>navigation:</p>
-<button type="button" class="btn btn-primary" [routerLink]="'/card'">User Card</button>
+<!-- <button type="button" class="btn btn-primary" [routerLink]="'/card'">User Card</button> -->
+<button type="button" class="btn btn-primary" [routerLink]="['card',8]">User Card with parameter</button>
+<button type="button" class="btn btn-light" (click)="goToCard()">Go To Card Function</button>
 <button type="button" class="btn btn-dark" [routerLink]="'/calculator'">calculator</button>
 <button type="button" class="btn btn-danger" [routerLink]="'/counter-nav'">counter nav</button>
 <button type="button" class="btn btn-success" [routerLink]="'/student'">students nav</button>
 <button type="button" class="btn btn-warning" [routerLink]="'/student/classmate'">students nav</button>
-<button type="button" class="btn btn-success" [routerLink]="'/student/score'">Student Module / score</button>
+<!-- <button type="button" class="btn btn-success" [routerLink]="'/student/score'">Student Module / score</button> -->
 <button type="button" class="btn btn-danger" [routerLink]="'/student/average'">Student module/ score/average</button>
+<button type="button" class="btn btn-secondary" (click)="goToStudentModule()">Go To Student Function</button>
+
 <div class="thing">
   <router-outlet></router-outlet>
 </div>

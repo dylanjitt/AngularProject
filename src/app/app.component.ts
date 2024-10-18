@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy,Component } from '@angular/core';
-import { RouterOutlet,RouterLink } from '@angular/router';
+import { RouterOutlet,RouterLink, Router } from '@angular/router';
 import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PersonsComponent } from './persons/persons.component';
@@ -60,7 +60,8 @@ export class AppComponent {
 // creación de Variable para probar NgIf y ngSwitch
   togg:boolean=true
 
-  constructor(){
+  constructor(private router:Router){
+
     this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
     
     // console.log("subtract",this.subtract(8,4))
@@ -170,6 +171,14 @@ export class AppComponent {
   }
   public addNumber(){
     this.students=[...this.students,12]
+  }
+
+  public goToStudentModule(){
+    this.router.navigate(['student'])
+  }
+
+  public goToCard(){
+    this.router.navigate(['card',1])
   }
   
 

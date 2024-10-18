@@ -2,6 +2,8 @@ import { Component,EventEmitter,Input,Output ,OnInit, OnDestroy, OnChanges, Simp
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-user-card',
   standalone: true,
@@ -23,12 +25,20 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
   showButton=true//para ver si se renderiza el boton
   password:string=''
 
+  sub: Subscription=new Subscription
+
   public onSendData(){
     this.sendData.emit("los skibidi se pusieron toilet")
   }
 
-  constructor(){
-    console.log("HOLAAAAA USER CARD")
+  constructor(private activatedRouter: ActivatedRoute){
+    // console.log("HOLAAAAA USER CARD")
+
+    this.sub.add(this.activatedRouter.params.subscribe((params)=>console.log("Params: ",params)))
+
+    
+
+    console.log('snapshot: ',this.activatedRouter.snapshot.params)
   }
 
   ngOnInit(): void {
@@ -39,6 +49,7 @@ export class UserCardComponent implements OnInit,OnDestroy,OnChanges, DoCheck, A
 
   ngOnDestroy(): void {
       console.log("ADIOS NG OnDestroy")
+      this.sub.unsubscribe()
   }
   ngOnChanges(changes: SimpleChanges): void {
       console.log(changes)
