@@ -10,6 +10,6 @@ import { User } from '../app.component';
 export class UserComponent {
 
   @Input() user!: User;
-
+  @Input() socials!: String[];
   constructor(){}
 }

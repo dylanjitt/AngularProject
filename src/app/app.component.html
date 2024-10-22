@@ -2,22 +2,23 @@
 <div class="cont">
 @for(item of socials;track $index){
   <div class="box">
+    <p>{{item[1].id}}</p>
     <p>{{item[1].platform}}</p>
     @if(item[1].platformType=='premium'){
       <p>*PREMIUM</p>
     }
-    <button>add new {{item[1].type}}</button>
+    <button (click)="addNewContent(item[1].id, item[1].platform, item[1].type, item[1].platformType)">add new {{item[1].type}}</button>
   </div>
 }
 </div>
 
 <div class="cont">
   @for(user of users;track $index){
-    <!-- <app-user [user]="user"></app-user> -->
-    <p>{{ user.name }}</p>
+    <app-user [user]="user"></app-user>
+    <!-- <p>{{ user.name }}</p>
     <p>{{ user.user_id }}</p>
-    <button type="button" [routerLink]="['/users', +user.user_id]">View User</button>
-    <button [routerLink]="['/users', +user.user_id, 'notifications']">View Notifications</button>
+    <button  [routerLink]="['/users', +user.user_id]">View User</button>
+    <button [routerLink]="['/users', +user.user_id, 'notifications']">View Notifications</button> -->
   
   }
 </div>

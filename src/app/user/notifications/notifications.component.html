@@ -1,1 +1,14 @@
 <p>notifications works!</p>
+<div *ngIf="user">
+  <div *ngIf="user.notifications.length > 0">
+    <h3>Notifications:</h3>
+    <ul>
+      <li *ngFor="let notification of user.notifications; let i = index">
+        {{ i + 1 }}. {{ notification }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="user.notifications.length === 0">
+    <p>No notifications available.</p>
+  </div>
+</div>

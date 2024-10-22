@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     const userId = this.route.snapshot.paramMap.get('id');
+    console.log('user: ',userId)
     if (userId) {
       this.user = users[+userId - 1];  // Find the user by ID
     }
