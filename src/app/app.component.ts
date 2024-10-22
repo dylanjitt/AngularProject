@@ -51,7 +51,7 @@ export class AppComponent {
       }),
       tap(users => console.log('Users subscribed to this platform:', users)),
       tap(users => {
-        this.users.forEach(user => {
+        users.forEach(user => {
           if (platformType === 'premium' && user.subscriptionType !== 'premium') {
             console.log(`${user.name} does not have premium access to ${platform}`);
             return; // Skip if the user doesn't have premium access
