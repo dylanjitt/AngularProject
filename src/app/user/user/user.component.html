@@ -1,0 +1,12 @@
+<div *ngIf="user">
+  <h2>{{ user.name }}</h2>
+  <p>Age: {{ user.age }}</p>
+  <p>Status: {{ user.status }}</p>
+  <p>Subscription Type: {{ user.subscriptionType }}</p>
+  <p>Amount Available: ${{ user.amountAvailable }}</p>
+
+  <!-- Add a link to the notifications component -->
+  <!-- <a [routerLink]="['/notifications']">View Notifications</a> -->
+
+  <router-outlet></router-outlet> 
+</div>

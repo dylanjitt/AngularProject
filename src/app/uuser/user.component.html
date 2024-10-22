@@ -1,0 +1,18 @@
+<p>user works!</p>
+<div class="box">
+  <h2>{{ user.name }}</h2>
+  <p>Age: {{ user.age }}</p>
+  <p>Status: {{ user.status }}</p>
+  <p>Subscription Type: {{ user.subscriptionType }}</p>
+  <p>Amount Available: ${{ user.amountAvailable }}</p>
+
+  <h3>Subscriptions</h3>
+  <ul>
+    <li *ngFor="let subscription of user.subscriptions">{{ subscription }}</li>
+  </ul>
+
+  <h3>Notifications</h3>
+  <ul>
+    <li *ngFor="let notification of user.notifications">{{ notification }}</li>
+  </ul>
+</div>

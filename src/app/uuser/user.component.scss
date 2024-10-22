@@ -3,8 +3,5 @@
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  margin: 5px;
-}
-.cont{
-  display: flex;
+  flex-direction: column;
 }
