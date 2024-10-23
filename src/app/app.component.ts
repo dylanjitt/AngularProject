@@ -8,7 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
 import { AppColorsDirective } from './app-colors.directive';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, NgForm } from '@angular/forms';
 import { CreateHtmlDirective } from './create-html.directive';
 import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
@@ -25,12 +25,16 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,FormsModule,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule,RouterLink],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule,RouterLink,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+
+  name:string='Patito'
+  lastName:string='Fernandez'
+  
 
   users=[{name: 'Marques Keith Brownlee',email:'Mkbhd@yt.net'},{name: 'Linus Sebastian',email:'linustechtips@lttstore.com'}]
   userMode:boolean=true
@@ -183,6 +187,10 @@ export class AppComponent {
   
   public onCalc(){
     this.router.navigate(['calculator'],{queryParams:{name:'eminem',lastName:'mathers'}})
+  }
+
+  public onSubmit(data:any){
+    console.log('submit: ',data)
   }
 
 }

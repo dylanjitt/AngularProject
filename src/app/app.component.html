@@ -132,11 +132,29 @@
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+
+    <!-- para usar con variables locales del ts -->
+    <!-- <p>name</p>
+    <input type="text" [(ngModel)]="name">
+    <p>lastName</p>
+    <input type="text" [(ngModel)]="lastName"> -->
+    <!-- para multiples variables -->
+    <form #testForm="ngForm" (ngSubmit)="onSubmit(testForm)">
+      <p>name</p>
+      <input type="text" ngModel name="name">
+      <p>lastName</p>
+      <input type="text" ngModel name="lastName">
+      <p>age</p>
+      <input type="text" ngModel name="age">
+      <p>city</p>
+      <input type="text" ngMode name="city">
+      <p>phone</p>
+      <input type="text" ngModel name="phone">
+      <button mat-button type="submit" >Send data</button>
+    </form>
+
+
+    
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>
