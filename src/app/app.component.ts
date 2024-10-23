@@ -181,5 +181,8 @@ export class AppComponent {
     this.router.navigate(['card',1])
   }
   
+  public onCalc(){
+    this.router.navigate(['calculator'],{queryParams:{name:'eminem',lastName:'mathers'}})
+  }
 
 }

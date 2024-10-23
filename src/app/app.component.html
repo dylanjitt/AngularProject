@@ -104,7 +104,8 @@
 <!-- <button type="button" class="btn btn-primary" [routerLink]="'/card'">User Card</button> -->
 <button type="button" class="btn btn-primary" [routerLink]="['card',8]">User Card with parameter</button>
 <button type="button" class="btn btn-light" (click)="goToCard()">Go To Card Function</button>
-<button type="button" class="btn btn-dark" [routerLink]="'/calculator'">calculator</button>
+<button type="button" class="btn btn-dark" [routerLink]="'/calculator'" [queryParams]="{name:'Pedro',age:20}">calculator QueryParams HTML</button>
+<button type="button" class="btn btn-dark" (click)="onCalc()">calculator QueryParams TS</button>
 <button type="button" class="btn btn-danger" [routerLink]="'/counter-nav'">counter nav</button>
 <button type="button" class="btn btn-success" [routerLink]="'/student'">students nav</button>
 <button type="button" class="btn btn-warning" [routerLink]="'/student/classmate'">students nav</button>

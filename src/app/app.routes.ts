@@ -21,3 +21,6 @@ export const routes: Routes = [
     loadChildren:()=>import("./student/student.module").then(c=>c.StudentModule)
   }
 ];
+
+// router params localhost:4200/card/4
+//query params localhost:4200/card?studentId=4&&name='Pedro'/4
