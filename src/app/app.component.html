@@ -151,6 +151,12 @@
       <p>phone</p>
       <input type="text" ngModel name="phone">
       <button mat-button type="submit" >Send data</button>
+      <button mat-button type="reset" >reset </button>
+
+      <p>Reactive Form</p>
+      <input type="text" [formControl]="scoreControl">
+      <button (click)="onPrnt()">onPrnt</button>
+
     </form>
 
 

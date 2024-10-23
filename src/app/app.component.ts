@@ -8,7 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
 import { AppColorsDirective } from './app-colors.directive';
-import { FormControl, FormsModule, NgForm } from '@angular/forms';
+import { FormControl, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CreateHtmlDirective } from './create-html.directive';
 import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
@@ -25,12 +25,14 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule,RouterLink,FormsModule],
+  imports: [RouterOutlet, UserCardComponent,CalculatorComponent,PersonsComponent,CommonModule,CounterComponent,AppColorsDirective,CreateHtmlDirective,PurePipe,ImpurePipe,MatCardModule,MatButtonModule,RouterLink,FormsModule,ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+
+  scoreControl=new FormControl<string>('',[Validators.required,Validators.min(1),Validators.max(100)])
 
   name:string='Patito'
   lastName:string='Fernandez'
@@ -67,6 +69,10 @@ export class AppComponent {
   constructor(private router:Router){
 
     this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
+
+    this.scoreControl.valueChanges.subscribe((res)=>{
+      console.log('changes: ',res)
+    })
     
     // console.log("subtract",this.subtract(8,4))
     // console.log("MAP",this.animals.map((animal)=>(animal+ ' peruano')   ))//genera nuevo array
@@ -191,6 +197,10 @@ export class AppComponent {
 
   public onSubmit(data:any){
     console.log('submit: ',data)
+  }
+
+  public onPrnt(){
+    console.log('score control: ',this.scoreControl)
   }
 
 }
