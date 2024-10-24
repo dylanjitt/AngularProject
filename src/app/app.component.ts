@@ -258,4 +258,8 @@ export class AppComponent {
     console.log("FORM GROUP: ",this.studentForm)
   }
 
+  public print(){
+    console.log('FORM NAME: ', this.studentForm.get('name'))
+  }
+
 }

@@ -141,7 +141,12 @@
     <!-- para multiples variables -->
     <form #testForm="ngForm" (ngSubmit)="onSubmit(testForm)">
       <p>name</p>
-      <input type="text" ngModel name="name">
+      <input type="text" #nameT="ngModel" name="name" ngModel required>
+      <div class="err" *ngIf="nameT.invalid && nameT.touched">
+        There is an error
+      </div>
+      <!-- <p>{{nameT.invalid|json}}</p>
+      <p>{{nameT.touched|json}}</p> -->
       <p>lastName</p>
       <input type="text" ngModel name="lastName">
       <p>age</p>
@@ -160,9 +165,13 @@
     </form>
 
     <h2>FORM GROUP:</h2>
-    <form [formGroup]="studentForm2" >
+    <form [formGroup]="studentForm" >
       <p>name</p>
       <input type="text" [formControlName]="'name'">
+      <div class="err" *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+        name is required
+      </div>
+      <button (click)="print()">Print name control</button>
       <p>score</p>
       <input type="text" [formControlName]="'score'">
       <p>school</p>
@@ -171,7 +180,7 @@
       <input type="text" [formControlName]="'professor'">
       <p>university</p>
       <input type="text" [formControlName]="'university'">
-      <button (click)="onSendData()" [disabled]="studentForm2.invalid">Send</button>
+      <button (click)="onSendData()" [disabled]="studentForm.invalid">Send</button>
     </form>
 
 
