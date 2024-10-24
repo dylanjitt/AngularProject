@@ -7,6 +7,10 @@ import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
 import { UserComponent } from './uuser/user.component';
 
+export interface SocialItem {
+  id: number;
+  value: string;
+}
 
 
 export interface User {
@@ -34,10 +38,12 @@ export class AppComponent {
 
   socials=Object.entries(socialNetworks)
   users: User[] = Object.entries(data).map(([key, value]) => value as User);
-
+  socialNames: SocialItem[] = [];
   constructor(){
     console.log(this.users)
     console.log(this.socials)
+    this.socialNames = this.socials.map(item => ({id:item[1].id,value:item[1].platform}));
+    //console.log('Social Platform Names:', this.socialNames);
   }
 
   addNewContent(id: number, platform: string, type: string, platformType: string) {
@@ -74,6 +80,56 @@ export class AppComponent {
     ).subscribe();
   }
 
+  // Function to handle adding a subscription
+  addItem(userId: string, socialId: number) {
+    // Find the index of the user in the array
+    const userIndex = this.users.findIndex((user) => user.user_id === userId);
+    if (userIndex !== -1) {
+      const user = this.users[userIndex];
+      if (!user.subscriptions.includes(socialId)) {
+        // Modify the subscriptions array and update the user object in the array
+        this.users[userIndex] = {
+          ...user,
+          subscriptions: [...user.subscriptions, socialId], // Ensure reactivity by creating a new array
+        };
+        console.log(`Added subscription to ${socialId} for user ${user.name}`);
+        
+      }
+    }
+  }
+
+  // Function to handle removing a subscription
+  removeItem(userId: string, socialId: number) {
+    // Find the index of the user in the array
+    const userIndex = this.users.findIndex((user) => user.user_id === userId);
+    if (userIndex !== -1) {
+      const user = this.users[userIndex];
+      if (user.subscriptions.includes(socialId)) {
+        // Modify the subscriptions array and update the user object in the array
+        this.users[userIndex] = {
+          ...user,
+          subscriptions: user.subscriptions.filter((id) => id !== socialId), // Remove the socialId
+        };
+        console.log(`Removed subscription to ${socialId} for user ${user.name}`);
+        
+      }
+    }
+  }
+
+  changeSub(userId: string, value: string) {
+    // Find the index of the user in the array
+    const userIndex = this.users.findIndex((user) => user.user_id === userId);
+    if (userIndex !== -1) {
+      const user = this.users[userIndex];
+      // Update the subscriptionType based on the value passed ('premium' or 'free')
+      this.users[userIndex] = {
+        ...user,
+        subscriptionType: value // Change the subscriptionType to the new value
+      };
+      console.log(`Changed subscription type to ${value} for user ${user.name}`);
+    }
+  }
+
 }
 
-export const users = new AppComponent().users;
+// export const users = new AppComponent().users;

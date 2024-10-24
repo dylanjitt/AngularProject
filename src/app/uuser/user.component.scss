@@ -5,3 +5,25 @@
   border: 2px solid black;
   flex-direction: column;
 }
+.off{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.on{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  background-color: greenyellow;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

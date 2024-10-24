@@ -1,23 +1,35 @@
 <div class="box">
+  <button [disabled]="!loggedIn" (click)="toggUser()">User</button>
+  <button [disabled]="!loggedIn" (click)="toggMessages()">Notifications ({{user.notifications.length}})</button>
+
+  @if(userView){
   <h2>{{ user.name }}</h2>
   <p>Age: {{ user.age }}</p>
-  <p>Status: {{ user.status }}</p>
-  <p>Subscription Type: {{ user.subscriptionType }}</p>
+  <div>Status: {{ user.status }}</div>
+  <div>Subscription Type: 
+    <button [disabled]="!loggedIn" [ngClass]="premium ? 'on' : 'off'" (click)="subType()">{{ user.subscriptionType }}</button>
+  </div>
   <p>Amount Available: ${{ user.amountAvailable }}</p>
 
-  <h3>Subscriptions</h3>
-  <ul>
-    @for(sub of user.subscriptions;track $index){
-      <p>{{sub}}</p>
-    }
-    <!-- <li *ngFor="let subscription of user.subscriptions">{{ subscription }}</li> -->
-  </ul>
+  <h3>Social Networks</h3>
+  @for(notSub of notThere; track $index) {
+    <p>{{ notSub.value }}</p>
+    <button [disabled]="!loggedIn" (click)="onAddItem(notSub.id)">+</button>
+  }
 
-  <h3>Notifications</h3>
-  <ul>
-    <!-- <li *ngFor="let notification of user.notifications">{{ notification }}</li> -->
-    @for(sub of user.notifications;track $index){
-      <p>{{sub}}</p>
-    }
-  </ul>
+  <h3>Subscriptions</h3>
+ 
+  @for(sub of subThere; track $index) {
+    <p>{{ sub.value }}</p>
+    <button [disabled]="!loggedIn" (click)="onRemoveItem(sub.id)">x</button>
+  }
+
+  
+  }
+  
+  <button [disabled]="!loggedIn" (click)="logOut()">Close Account</button>
+
+  @if(notifView){
+  <app-notifs [messages]="user.notifications"></app-notifs>
+  }
 </div>
