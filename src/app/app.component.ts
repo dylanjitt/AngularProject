@@ -8,7 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { from } from 'rxjs/internal/observable/from';
 import { filter, map, tap } from 'rxjs/operators';
 import { AppColorsDirective } from './app-colors.directive';
-import { FormBuilder, FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CreateHtmlDirective } from './create-html.directive';
 import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
@@ -20,6 +20,14 @@ interface IPerson{
   name:string
   latName:string
   age?:number
+}
+
+interface IForm{
+  name: string,
+  score:number,
+  school:string,
+  professor:string,
+  university:string
 }
 
 @Component({
@@ -35,6 +43,7 @@ export class AppComponent {
   scoreControl=new FormControl<string>('',[Validators.required,Validators.min(1),Validators.max(100)])
 
   studentForm!: FormGroup
+  studentForm2!: UntypedFormGroup
 
   name:string='Patito'
   lastName:string='Fernandez'
@@ -68,7 +77,11 @@ export class AppComponent {
 // creación de Variable para probar NgIf y ngSwitch
   togg:boolean=true
 
-  constructor(private router:Router,private formBuilder: FormBuilder){
+  constructor(
+    private router:Router,
+    private formBuilder: FormBuilder,
+    private untypedFormBuilder:UntypedFormBuilder
+  ){
 
     this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
 
@@ -78,7 +91,25 @@ export class AppComponent {
     })
     
     //formBuilder
+    //syntax 1:
     this.studentForm=this.formBuilder.group({
+      name: ['',Validators.required],
+      score:[''],
+      school:[''],
+      professor:[''],
+      university:['']
+    })
+
+    //syntax 2:
+    // this.studentForm=new FormGroup({
+    //   name: new FormControl('',Validators.required),
+    //   score: new FormControl(''),
+    //   school: new FormControl(''),
+    //   professor: new FormControl(''),
+    //   university: new FormControl('')
+    // })
+
+    this.studentForm2=this.untypedFormBuilder.group({
       name: ['',Validators.required],
       score:[''],
       school:[''],
@@ -89,6 +120,9 @@ export class AppComponent {
     this.studentForm.valueChanges.subscribe((res)=>{
       console.log('Student form changes: ',res)
     })
+
+
+
     // console.log("subtract",this.subtract(8,4))
     // console.log("MAP",this.animals.map((animal)=>(animal+ ' peruano')   ))//genera nuevo array
     // console.log("FOREACH",this.animals.forEach((animal)=>(animal+ ' argentino')   ))//usa elementos del viejo array
