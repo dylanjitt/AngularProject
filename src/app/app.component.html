@@ -159,6 +159,21 @@
 
     </form>
 
+    <h2>FORM GROUP:</h2>
+    <form [formGroup]="studentForm" >
+      <p>name</p>
+      <input type="text" [formControlName]="'name'">
+      <p>score</p>
+      <input type="text" [formControlName]="'score'">
+      <p>school</p>
+      <input type="text" [formControlName]="'school'">
+      <p>professor</p>
+      <input type="text" [formControlName]="'professor'">
+      <p>university</p>
+      <input type="text" [formControlName]="'university'">
+      <button (click)="onSendData()" [disabled]="studentForm.invalid">Send</button>
+    </form>
+
 
     
   </mat-card-content>
