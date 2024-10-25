@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExamService } from '../exam.service';
 
 @Component({
   selector: 'app-classmate',
@@ -9,4 +10,13 @@ import { Component } from '@angular/core';
 })
 export class ClassmateComponent {
 
+  newScore:number[]=[]
+  constructor (
+    private exam:ExamService
+  ){
+    this.exam.getScores().subscribe(scores=> {
+      console.log('SCORES:',scores)
+      this.newScore=scores
+    })
+  }
 }

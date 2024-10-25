@@ -7,6 +7,7 @@ import { AverageComponent } from './average/average.component';
 import { ClassmateComponent } from './classmate/classmate.component';
 import { RouterOutlet,RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ExamService } from './exam.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthService } from '../auth.service';
     // RouterLink
   ],
   providers:[
-    AuthService
+    AuthService,
+    ExamService
   ]
 })
 export class StudentModule { }
