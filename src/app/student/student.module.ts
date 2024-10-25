@@ -6,6 +6,7 @@ import { ScoreComponent } from './score/score.component';
 import { AverageComponent } from './average/average.component';
 import { ClassmateComponent } from './classmate/classmate.component';
 import { RouterOutlet,RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,9 @@ import { RouterOutlet,RouterLink } from '@angular/router';
     StudentRoutingModule,
     
     // RouterLink
+  ],
+  providers:[
+    AuthService
   ]
 })
 export class StudentModule { }

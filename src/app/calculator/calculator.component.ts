@@ -2,10 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-calculator',
   standalone: true,
   imports: [FormsModule,CommonModule],
+  providers:[AuthService],
   // templateUrl: './calculator.component.html',
   template:`
   <div class="body">
@@ -17,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
       <button (click)="onMult(box1Value,box2Value)">Multiplicar</button>
       <button (click)="onSum(box1Value,box2Value)">Sumar</button>
       <button (click)="onReset()">Reset</button>
+      <button (click)="onLogin()">Login</button>
     </div>
   </div>
   <div class="historial">
@@ -40,7 +43,10 @@ export class CalculatorComponent implements OnInit{
   @Output() mult = new EventEmitter<number>()
   @Output() reset = new EventEmitter<number>()
 
-  constructor(private router:ActivatedRoute){}
+  constructor(
+    private router:ActivatedRoute,
+    private auth:AuthService
+  ){}
 
   ngOnInit(): void {
       this.router.queryParams.subscribe(params=>{
@@ -69,6 +75,10 @@ export class CalculatorComponent implements OnInit{
     this.box1Value=0
     this.box2Value=0
     this.variables=[]
+  }
+
+  public onLogin(){
+    console.log(this.auth.login())
   }
 
 }

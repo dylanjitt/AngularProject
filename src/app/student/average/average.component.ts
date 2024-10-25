@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'app-average',
   // standalone: true,
@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AverageComponent {
 
+  constructor(private auth: AuthService){}
+
+  login(){
+    console.log('Logged user: ',this.auth.login())
+  }
 }
