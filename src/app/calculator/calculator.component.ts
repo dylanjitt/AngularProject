@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterLink],
   providers:[AuthService],
   // templateUrl: './calculator.component.html',
   template:`
@@ -20,6 +20,7 @@ import { AuthService } from '../auth.service';
       <button (click)="onSum(box1Value,box2Value)">Sumar</button>
       <button (click)="onReset()">Reset</button>
       <button (click)="onLogin()">Login</button>
+      <button class="reset" [routerLink]="'/student'">Login without token</button>
     </div>
   </div>
   <div class="historial">
@@ -44,12 +45,13 @@ export class CalculatorComponent implements OnInit{
   @Output() reset = new EventEmitter<number>()
 
   constructor(
-    private router:ActivatedRoute,
-    private auth:AuthService
+    private ActivatedRouter:ActivatedRoute,
+    private auth:AuthService,
+    private router:Router
   ){}
 
   ngOnInit(): void {
-      this.router.queryParams.subscribe(params=>{
+      this.ActivatedRouter.queryParams.subscribe(params=>{
         console.log('calculator params route: ',params)//['name'])
       })
   }
@@ -79,6 +81,7 @@ export class CalculatorComponent implements OnInit{
 
   public onLogin(){
     console.log(this.auth.login())
+    this.router.navigate(['/student'])
   }
 
 }
