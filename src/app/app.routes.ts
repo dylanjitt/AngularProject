@@ -3,6 +3,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuardForm } from './guards/guard-form.guard';
+import { loadGuard } from './guards/load.guard';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
     path:'student',
     title: 'Student',
     canActivate: [AuthGuard],
+    canMatch:[loadGuard],
     loadChildren:()=>import("./student/student.module").then(c=>c.StudentModule)
   }
 ];
