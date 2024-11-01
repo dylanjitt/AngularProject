@@ -14,6 +14,7 @@ import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card'
 import {MatButtonModule} from '@angular/material/button';
+import { StudentService } from './services/student.service';
 
 //interfaces
 interface IPerson{
@@ -80,8 +81,15 @@ export class AppComponent {
   constructor(
     private router:Router,
     private formBuilder: FormBuilder,
-    private untypedFormBuilder:UntypedFormBuilder
+    private untypedFormBuilder:UntypedFormBuilder,
+    //crud 
+    private _studentService: StudentService
+
   ){
+
+    this._studentService.getStudents().subscribe((res) => {
+      console.log('STUDENTS JSON: ', res)
+    });
 
     this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
 
