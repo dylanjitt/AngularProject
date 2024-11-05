@@ -1,4 +1,4 @@
-<p>score works!</p>
+<!-- <p>score works!</p>
 
 <button [routerLink]="'average'">AVerage</button>
 <button [routerLink]="'../calculator'">go Calculator</button>
@@ -6,4 +6,47 @@
     <router-outlet></router-outlet>
 </div>
 
-<app-classmate></app-classmate>
+<app-classmate></app-classmate> -->
+
+<div class="h-screen flex flex-col bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <span class="text-xl font-bold text-blue-700">BLUEBACK</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <!-- User Info -->
+      <div class="flex items-center space-x-2">
+        <span class="text-gray-700 font-semibold">User Name</span>
+        <img src="https://via.placeholder.com/32" alt="User Avatar" class="w-8 h-8 rounded-full" />
+      </div>
+      <!-- Logout Button -->
+      <button (click)="onLogout()" class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 font-semibold">Logout</button>
+    </div>
+  </header>
+
+  <!-- Student List Section -->
+  <div class="flex-1 flex flex-col items-center space-y-4 p-4">
+    <ng-container *ngIf="students.length > 0; else noStudents">
+      <div *ngFor="let student of students" class="w-full max-w-4xl shadow-lg rounded-lg overflow-hidden bg-white flex">
+        <!-- Left Side -->
+        <div class="flex-1 bg-gradient-to-b from-blue-500 to-blue-700 p-8 flex flex-col items-center justify-center text-white">
+          <h1 class="text-5xl font-bold mb-4">{{ student.firstName.charAt(0) }}</h1>
+          <p class="text-lg font-semibold">{{ student.firstName}} {{student.lastName}}</p>
+          <p class="text-lg font-semibold">Age: {{student.age}}</p>
+          <p class="text-lg font-semibold">Gender: {{ student.gender }}</p>
+          <p class="text-lg font-semibold">Major: {{ student.major }}</p>
+          <p class="text-lg font-semibold">Email: {{ student.email }}</p>
+          <p class="text-lg font-semibold">Major: {{ student.major }}</p>
+          <p class="text-lg font-semibold">GPA: {{ student.gpa }}</p>
+          <p class="text-lg font-semibold">Graduation Year: {{ student.graduationYear }}</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- No Students Fallback -->
+    <ng-template #noStudents>
+      <p class="text-gray-500">No students available.</p>
+    </ng-template>
+  </div>
+</div>

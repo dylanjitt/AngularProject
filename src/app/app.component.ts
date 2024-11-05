@@ -15,6 +15,7 @@ import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card'
 import {MatButtonModule} from '@angular/material/button';
 import { StudentService } from './services/student.service';
+import { AuthService } from './auth.service';
 
 //interfaces
 interface IPerson{
@@ -83,30 +84,31 @@ export class AppComponent {
     private formBuilder: FormBuilder,
     private untypedFormBuilder:UntypedFormBuilder,
     //crud 
-    private _studentService: StudentService
+    private _studentService: StudentService,
+    private _authService: AuthService
 
   ){
 
-    this._studentService.getStudents().subscribe((res) => {
-      console.log('STUDENTS JSON: ', res)
-    });
+    // this._studentService.getStudents().subscribe((res) => {
+    //   console.log('STUDENTS JSON: ', res)
+    // });
 
-    this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
+    // this.youtube.subscribe(res=>{console.log('SUB 1: ',res)})
 
-    //cambios en tiempo real en el formulario
-    this.scoreControl.valueChanges.subscribe((res)=>{
-      console.log('changes: ',res)
-    })
+    // //cambios en tiempo real en el formulario
+    // this.scoreControl.valueChanges.subscribe((res)=>{
+    //   console.log('changes: ',res)
+    // })
     
     //formBuilder
     //syntax 1:
-    this.studentForm=this.formBuilder.group({
-      name: ['',Validators.required],
-      score:[''],
-      school:[''],
-      professor:[''],
-      university:['']
-    })
+    // this.studentForm=this.formBuilder.group({
+    //   name: ['',Validators.required],
+    //   score:[''],
+    //   school:[''],
+    //   professor:[''],
+    //   university:['']
+    // })
 
     //syntax 2:
     // this.studentForm=new FormGroup({
@@ -117,17 +119,17 @@ export class AppComponent {
     //   university: new FormControl('')
     // })
 
-    this.studentForm2=this.untypedFormBuilder.group({
-      name: ['',Validators.required],
-      score:[''],
-      school:[''],
-      professor:[''],
-      university:['']
-    })
+    // this.studentForm2=this.untypedFormBuilder.group({
+    //   name: ['',Validators.required],
+    //   score:[''],
+    //   school:[''],
+    //   professor:[''],
+    //   university:['']
+    // })
 
-    this.studentForm.valueChanges.subscribe((res)=>{
-      console.log('Student form changes: ',res)
-    })
+    // this.studentForm.valueChanges.subscribe((res)=>{
+    //   console.log('Student form changes: ',res)
+    // })
 
 
 
@@ -268,6 +270,11 @@ export class AppComponent {
 
   public print(){
     console.log('FORM NAME: ', this.studentForm.get('name'))
+  }
+
+  public onLogin(){
+    this._authService.login()
+    this.router.navigate(['student'])
   }
 
 }
