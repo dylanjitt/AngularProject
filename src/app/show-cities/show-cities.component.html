@@ -1,0 +1,17 @@
+<div class="cont">
+  <!-- Add new city input and error display -->
+   <div class="cont">
+    <div class="cont2">
+      <input class="textInp" [(ngModel)]="newCityName" placeholder="Enter new city name" />
+      <button class="add" (click)="addCity()">Add City</button>
+    </div>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  
+  <!-- Filter input -->
+    <input class="textInp" [(ngModel)]="filterText" (input)="filterCities()" placeholder="Filter cities" />
+  </div>
+  <!-- Display filtered cities -->
+  @for(city of filteredCities;track $index){
+    <button class="buttonCity" (click)="deleteCity(city.name)">{{city.name}}</button>
+  }
+</div>
